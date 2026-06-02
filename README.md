@@ -2,7 +2,7 @@
 
 Portafolio personal con estética cyberpunk. Construido con React 19, Vite y Three.js.
 
-**[→ Ver en vivo](https://tudominio.com)**
+**[→ Ver en vivo](https://portafolio-developer-ten.vercel.app/)**
 
 ---
 
@@ -49,7 +49,7 @@ pnpm build
 
 ```env
 VITE_FORMSPREE_ID=tu_id_de_formspree
-VITE_SITE_URL=https://tudominio.com
+VITE_SITE_URL=https://portafolio-developer-ten.vercel.app/
 ```
 
 ## Estructura del proyecto

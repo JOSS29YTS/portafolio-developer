@@ -66,5 +66,9 @@
   - Preservamos todas las características de alta gama: el resplandor ambiental adaptativo (`.ambientGlow`), gestos táctiles de swipe nativo, compatibilidad con movimiento reducido (`reducedMotion`), y la animación de flotación bobinante continua.
 - **Verificación de Compilación Exitosa:** Compilación exitosa de producción certificada en 2.84s con `pnpm build`, 0 advertencias de ESLint, y chunks asíncronos distribuidos a la perfección.
 
+### Sesión actual (1 Jun 2026)
+- **Corrección de URL en vivo en el README:** Actualizamos el enlace principal de demostración en vivo (`Ver en vivo`) y el ejemplo de `VITE_SITE_URL` en `README.md` para que apunten de forma correcta al dominio real del portafolio: `https://portafolio-developer-ten.vercel.app/`.
+- **Verificación de Compilación:** Ejecutamos `pnpm build` para asegurar la integridad de la compilación e inyección del dominio.
+
 ### Pendiente de tu parte
 - **[Opcional]** Reemplazar `VITE_SITE_URL` en `.env` (o en la interfaz de Vercel) con un dominio personalizado propio cuando decidas comprar uno.
