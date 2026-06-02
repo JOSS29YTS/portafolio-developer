@@ -4,7 +4,7 @@ export const config = {
   github: 'https://github.com/JOSS29YTS',
   linkedin: 'https://www.linkedin.com/in/alejandrovilla-dev',
   formspreeId: import.meta.env.VITE_FORMSPREE_ID,
-  domain: import.meta.env.VITE_SITE_URL || 'https://ale.dev',
+  domain: import.meta.env.VITE_SITE_URL || 'https://portafolio-developer-ten.vercel.app',
   cvUrl: '/CV_Alejandro_Villa.pdf',
 }
 

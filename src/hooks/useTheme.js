@@ -16,8 +16,8 @@ export default function useTheme() {
       const saved = localStorage.getItem(STORAGE_KEY)
       if (saved === LIGHT || saved === DARK) return saved
     } catch { /* localStorage blocked */ }
-    // Fallback: preferencia del sistema operativo
-    return window.matchMedia('(prefers-color-scheme: light)').matches ? LIGHT : DARK
+    // Fallback: por defecto siempre modo oscuro (Cyberpunk)
+    return DARK
   })
 
   useEffect(() => {
