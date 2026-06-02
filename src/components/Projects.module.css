@@ -1,0 +1,370 @@
+/* ─── Section shell ─────────────────────────────────────────── */
+.section {
+  padding: 6rem 2rem 8rem;
+  background: var(--bg-base);
+  overflow: hidden;
+  /* clip cards that drift outside */
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ─── Header ─────────────────────────────────────────────────── */
+.header {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.sub {
+  font-size: 15px;
+  color: var(--text-secondary);
+  max-width: 480px;
+  font-weight: 300;
+  margin: 0 auto;
+}
+
+/* ─── Filters ─────────────────────────────────────────────────── */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.filterBtn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-pill, 999px);
+  border: 0.5px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.filterBtn:hover {
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+.filterActive {
+  color: var(--accent) !important;
+}
+
+.filterBg {
+  position: absolute;
+  inset: -0.5px;
+  background: var(--accent-dim);
+  border-radius: var(--radius-pill, 999px);
+  border: 0.5px solid var(--accent);
+  z-index: 1;
+  box-shadow: 0 0 12px var(--accent-dim);
+  pointer-events: none;
+}
+
+.emptyMsg {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-family: var(--font-mono);
+}
+
+/* ─── Slider Scene ───────────────────────────────────────────── */
+.scene {
+  position: relative;
+  width: 100%;
+  min-height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible; /* Allows the card to slide gracefully outside container boundaries */
+}
+
+/* Ambient glow that changes colour with the active project */
+.ambientGlow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: background 0.7s ease;
+  z-index: 0;
+}
+
+/* Slider card wrapper */
+.sliderCardWrap {
+  width: 100%;
+  max-width: 540px;
+  z-index: 2;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Float wrapper inside sliderCardWrap to handle continuous bobbing animation */
+.floatWrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 3.6s ease-in-out infinite;
+}
+
+.floatWrapPaused {
+  animation-play-state: paused !important;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ─── Side arrows (absolutely positioned inside .scene) ──────── */
+.navSide {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 0.5px solid var(--border);
+  background: var(--nav-btn-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
+}
+
+.navSide:hover:not(:disabled) {
+  background: var(--nav-btn-bg-hover);
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+  transform: scale(1.08);
+}
+
+.navSide:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.navSideLeft {
+  left: 0.75rem;
+  transform: translateY(-50%);
+}
+
+.navSideLeft:hover:not(:disabled) {
+  transform: translateY(-50%) scale(1.08);
+}
+
+.navSideRight {
+  right: 0.75rem;
+  transform: translateY(-50%);
+}
+
+.navSideRight:hover:not(:disabled) {
+  transform: translateY(-50%) scale(1.08);
+}
+
+/* ─── Controls (bottom arrows + dots container) ──────────────── */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.75rem; /* Push down to avoid any overlap with floating cards */
+  position: relative;
+  z-index: 20;
+}
+
+.mobileNavBtn {
+  display: none; /* hidden on desktop */
+}
+
+/* ─── Dots (below scene, centered) ───────────────────────────── */
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  background: var(--text-muted);
+  transition: background 0.3s, transform 0.3s, width 0.3s;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+.dot::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  bottom: -10px;
+  left: -4px;
+  right: -4px;
+}
+
+.dotActive {
+  background: var(--accent);
+  transform: scale(1.3);
+  width: 20px;
+  border-radius: 4px;
+}
+
+/* ─── Flat layout (TOTAL ≤ 3) ──────────────────────────── */
+.flatRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.flatCard {
+  flex: 0 0 280px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flatCard > article {
+  height: 100%;
+}
+
+.flatCard:only-child {
+  flex: 0 1 540px;
+  max-width: 540px;
+  width: 100%;
+}
+
+/* If there are exactly 2 items, make them a bit larger and side-by-side */
+.flatCard:first-child:nth-last-child(2),
+.flatCard:first-child:nth-last-child(2) ~ .flatCard {
+  flex: 0 1 380px;
+  max-width: 400px;
+  width: 100%;
+}
+
+/* ─── Skeleton ────────────────────────────────────────────── */
+.skeletonWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── Mobile ─────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .scene {
+    min-height: 400px;
+  }
+
+  .sliderCardWrap {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .flatRow {
+    gap: 1rem;
+  }
+
+  .flatCard {
+    flex: 0 0 260px;
+  }
+
+  .flatCard:only-child {
+    flex: 0 1 100%;
+    max-width: 100%;
+  }
+
+  /* Make double-projects full width stacked on mobile devices */
+  .flatCard:first-child:nth-last-child(2),
+  .flatCard:first-child:nth-last-child(2) ~ .flatCard {
+    flex: 0 1 100%;
+    max-width: 100%;
+  }
+
+  .navSide {
+    display: none !important;
+  }
+
+  .controls {
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .mobileNavBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 0.5px solid var(--border);
+    background: var(--nav-btn-bg);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .mobileNavBtn:hover:not(:disabled) {
+    background: var(--nav-btn-bg-hover);
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+    transform: scale(1.06);
+  }
+
+  .mobileNavBtn:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+}

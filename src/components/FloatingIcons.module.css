@@ -1,0 +1,85 @@
+.iconsLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floatingIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: auto;
+  cursor: default;
+  /* Position driven by CSS custom props set by rAF */
+  transform: translate(var(--ix, 0px), var(--iy, 0px));
+  /* base: greyscale + low opacity */
+  filter: grayscale(1) brightness(1.1);
+  opacity: 0.45;
+  transition:
+    filter 0.25s ease-out,
+    opacity 0.25s ease-out,
+    transform 0.22s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+  will-change: transform;
+}
+
+/* Hover → full color + glow + scale (translate is preserved via var) */
+.floatingIcon:hover {
+  filter: grayscale(0) brightness(1) drop-shadow(0 0 10px currentColor);
+  opacity: 0.92;
+  transform: translate(var(--ix, 0px), var(--iy, 0px)) scale(1.18);
+}
+
+/* Center zone (behind text) → dim only, never disappears */
+.floatingIcon[data-center="true"] {
+  opacity: 0.12;
+  filter: grayscale(1) brightness(0.8);
+}
+
+/* Tooltip — position:fixed to escape hero overflow:hidden */
+.iconTooltip {
+  position: fixed;
+  transform: translate(-50%, calc(-100% - 4px));
+  background: var(--bg-surface);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  padding: 3px 9px;
+  border-radius: 4px;
+  border: 0.5px solid var(--border-hover);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 9999;
+  animation: tooltipIn 0.18s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes tooltipIn {
+  from { opacity: 0; transform: translate(-50%, calc(-100% - 10px)); }
+  to   { opacity: 1; transform: translate(-50%, calc(-100% - 4px)); }
+}
+
+/* Dark icons — invert to make visible on dark background */
+.floatingIcon[data-name="GitHub"],
+.floatingIcon[data-name="Express"],
+.floatingIcon[data-name="JWT"],
+.floatingIcon[data-name="Flask"] {
+  filter: grayscale(1) var(--floating-icon-invert);
+}
+
+.floatingIcon[data-name="GitHub"]:hover,
+.floatingIcon[data-name="Express"]:hover,
+.floatingIcon[data-name="JWT"]:hover,
+.floatingIcon[data-name="Flask"]:hover {
+  filter: grayscale(0) var(--floating-icon-invert-hover);
+} 
+
+.floatingIcon[data-name="Pandas"] {
+  filter: grayscale(1) var(--floating-pandas-invert);
+}
+.floatingIcon[data-name="Pandas"]:hover {
+  filter: grayscale(0) var(--floating-pandas-invert-hover);
+}

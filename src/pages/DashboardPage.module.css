@@ -1,0 +1,55 @@
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 6rem 2rem 4rem;
+}
+
+.header {
+  margin-bottom: 3rem;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  margin-bottom: 2rem;
+  transition: color 0.2s;
+}
+
+.back:hover {
+  color: var(--accent-bright);
+}
+
+.headerInfo {
+  max-width: 600px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.sub {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-weight: 300;
+}

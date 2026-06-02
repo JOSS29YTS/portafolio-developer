@@ -1,0 +1,81 @@
+.card {
+  width: 340px;
+  background: var(--bg-card);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.preview {
+  height: 200px;
+  background: var(--bg-surface);
+  border-bottom: 0.5px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+.mockBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-bottom: 0.5px solid var(--border);
+}
+.d1,
+.d2,
+.d3 {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+.d1 { background: #FF2079; }
+.d2 { background: #FFEA00; }
+.d3 { background: #00FF88; }
+
+.mockScreen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 24px;
+}
+
+.line {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--skeleton-bg);
+}
+
+.body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tagRow {
+  display: flex;
+  gap: 8px;
+}
+
+.tagPulse {
+  height: 18px;
+  border-radius: var(--radius-pill);
+  background: var(--skeleton-bg);
+}
+
+.titlePulse {
+  height: 20px;
+  width: 65%;
+  border-radius: 6px;
+  background: var(--skeleton-bg);
+}
+
+.descPulse {
+  height: 12px;
+  width: 90%;
+  border-radius: 6px;
+  background: var(--skeleton-bg);
+}

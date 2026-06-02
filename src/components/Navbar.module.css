@@ -1,0 +1,163 @@
+.skipLink {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: #070711;
+  font-weight: 600;
+  font-size: 14px;
+  clip: rect(0,0,0,0);
+  transition: top 0.2s;
+}
+.skipLink:focus {
+  top: 0;
+  clip: auto;
+}
+
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.25rem 2rem;
+  transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+}
+
+.scrolled {
+  background: var(--navbar-bg, rgba(8,8,16,0.85));
+  backdrop-filter: blur(20px);
+  border-bottom: 0.5px solid var(--border);
+}
+
+.nav {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+.logo span { color: var(--accent); }
+
+.links {
+  display: flex;
+  gap: 2rem;
+}
+.links a {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+  position: relative;
+}
+.links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 0.5px;
+  background: var(--accent);
+  transition: width 0.2s;
+}
+.links a:hover { color: var(--text-primary); }
+.links a:hover::after { width: 100%; }
+.links a.active { color: var(--text-primary); }
+.links a.active::after { width: 100%; }
+
+.menuBtn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.menuBtn span {
+  display: block;
+  width: 22px; height: 1.5px;
+  background: var(--text-secondary);
+  border-radius: 2px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.x1 { transform: translateY(6.5px) rotate(45deg); }
+.x2 { opacity: 0; }
+.x3 { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── Agrupador de controles derecha (tema + hamburguesa) ── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Botón toggle de tema ── */
+.themeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  border: 0.5px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+.themeBtn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+@media (max-width: 600px) {
+  .menuBtn { display: flex; }
+  .links {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    flex-direction: column;
+    background: var(--navbar-bg);
+    border-bottom: 0.5px solid var(--border);
+    padding: 1.5rem 2rem;
+    gap: 1.25rem;
+  }
+  .links.open { display: flex; }
+  /* El themeBtn siempre visible en móvil */
+  .themeBtn { display: flex; }
+}
+
+/* ── Botón toggle de idioma ── */
+.langBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  border: 0.5px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+.langBtn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+

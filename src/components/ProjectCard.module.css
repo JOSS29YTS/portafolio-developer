@@ -1,0 +1,396 @@
+.card {
+  background: var(--bg-card);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.25s, transform 0.25s, background 0.25s;
+  animation: cardIn 0.6s ease both;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  transform: translateY(-3px);
+}
+
+/* When card is on the back face of the 3D cylinder — no hover effects */
+.cardInactive {
+  pointer-events: none;
+}
+.cardInactive:hover {
+  border-color: var(--border);
+  background: var(--bg-card);
+  transform: none;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.preview {
+  height: 160px;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-bottom: 0.5px solid var(--border);
+  overflow: hidden;
+}
+
+.mockBrowser {
+  width: 88%;
+  background: rgba(0,0,0,0.35);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 0.5px solid rgba(255,255,255,0.08);
+}
+.mockBar {
+  height: 22px;
+  background: rgba(255,255,255,0.04);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 5px;
+}
+.d1, .d2, .d3 {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+}
+.d1 { background: #ff5f57; }
+.d2 { background: #febc2e; }
+.d3 { background: #28c840; }
+
+.mockContent {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 70px;
+  overflow: hidden;
+}
+
+.previewImg {
+  width: calc(100% + 24px);
+  height: 93px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 0;
+  display: block;
+  margin: -10px -12px;
+}
+
+.previewScreenshot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  border-radius: 0;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+.sparkline {
+  display: block;
+  overflow: visible;
+}
+
+.sparklinePath {
+  transition: stroke-dashoffset 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sparklineDot {
+  animation: dotPop 0.3s ease both;
+}
+
+@keyframes dotPop {
+  from { r: 0; opacity: 0; }
+  to { r: 3; opacity: 1; }
+}
+
+.sparklineFill {
+  transition: opacity 0.5s ease;
+}
+
+.tree {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.treeItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-family: ui-monospace, monospace;
+  color: rgba(255,255,255,0.3);
+  padding: 2px 4px;
+  border-radius: 3px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.treeItem.treeVisible {
+  color: rgba(255,255,255,0.6);
+}
+
+.treeItem:hover {
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.8);
+}
+
+.statusBadge {
+  position: absolute;
+  top: 10px; right: 10px;
+  font-size: 10px; font-weight: 500;
+  background: rgba(186,117,23,0.2);
+  color: #EF9F27;
+  border: 0.5px solid rgba(239,159,39,0.3);
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.02em;
+}
+.liveBadge {
+  position: absolute;
+  top: 10px; right: 10px;
+  font-size: 10px; font-weight: 500;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  border: 0.5px solid;
+  display: flex; align-items: center; gap: 5px;
+  letter-spacing: 0.02em;
+}
+.liveDot {
+  width: 5px; height: 5px; border-radius: 50%;
+}
+
+.body { padding: 1.1rem 1.25rem 1.25rem; display: flex; flex-direction: column; gap: 0; flex: 1; }
+
+.tags {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.tag {
+  font-size: 11px;
+  padding: 2px 9px;
+  background: rgba(255,255,255,0.04);
+  color: var(--text-muted);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.02em;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 1.1rem;
+  font-weight: 300;
+  flex: 1;
+}
+
+.actions { display: flex; gap: 8px; margin-top: auto; }
+
+.btnDemo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 12px; font-weight: 500;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  border: 0.5px solid;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.btnDemo:hover { opacity: 0.85; transform: translateY(-1px); }
+
+.btnGithub {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px; font-weight: 400;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  border: 0.5px solid var(--border);
+  color: var(--text-secondary);
+  background: transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btnGithub:hover {
+  color: var(--text-primary);
+  border-color: rgba(255,255,255,0.2);
+}
+
+/* POS Mockup inside ProjectCard */
+.posMock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+.posHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 8px;
+  color: var(--text-muted);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 3px;
+}
+
+.posTitle {
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.posStatus {
+  font-size: 7px;
+  font-weight: bold;
+  animation: posPulse 1.5s infinite;
+}
+
+.posGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.posCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 0.5px solid rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+  padding: 4px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.posLabel {
+  font-size: 6px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.posVal {
+  font-size: 11px;
+  font-weight: 800;
+}
+
+@keyframes posPulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+/* PhishShield Mockup inside ProjectCard */
+.phishMock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+.phishHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 8px;
+  color: var(--text-muted);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 3px;
+}
+
+.phishTitle {
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.phishStatus {
+  font-size: 7px;
+  font-weight: bold;
+}
+
+.phishBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.phishRow {
+  display: flex;
+  gap: 4px;
+  font-size: 8px;
+  align-items: center;
+}
+
+.phishLabel {
+  color: var(--text-muted);
+  font-weight: bold;
+}
+
+.phishValUrl {
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+.phishProgress {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.phishProgressBar {
+  height: 100%;
+  transition: width 0.4s ease, background-color 0.4s ease;
+}
+
+.phishStats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.phishStatCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 0.5px solid rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+  padding: 4px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.phishStatLabel {
+  font-size: 6px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.phishStatVal {
+  font-size: 11px;
+  font-weight: 800;
+}

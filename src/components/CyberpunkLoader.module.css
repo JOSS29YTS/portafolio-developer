@@ -1,0 +1,197 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #070711;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+  font-family: var(--font-mono), monospace;
+  color: var(--text-primary);
+}
+
+/* ─── Grid and scanline background animations ─── */
+.gridOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(7,7,17,0) 0%, #070711 80%),
+              linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+              linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 100%, 100% 4px, 6px 100%;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.scanLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0) 0%,
+    rgba(0, 212, 255, 0.08) 10%,
+    rgba(255,255,255,0) 20%
+  );
+  animation: scan 6s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes scan {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
+}
+
+/* ─── Terminal Box ─── */
+.terminalBox {
+  width: 90%;
+  max-width: 580px;
+  background-color: #0a0a18;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  box-shadow: 0 0 20px var(--accent-dim), inset 0 0 15px rgba(0, 212, 255, 0.05);
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+  animation: terminalPulse 2s infinite alternate;
+}
+
+@keyframes terminalPulse {
+  0% {
+    border-color: rgba(0, 212, 255, 0.4);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.15);
+  }
+  100% {
+    border-color: var(--accent);
+    box-shadow: 0 0 30px var(--accent-dim);
+  }
+}
+
+/* ─── Header ─── */
+.terminalHeader {
+  background-color: #0e0e20;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+  margin-right: 20px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.terminalTitle {
+  flex-grow: 1;
+  color: var(--text-secondary);
+}
+
+.liveTag {
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--accent);
+}
+
+/* ─── Terminal Body ─── */
+.terminalBody {
+  padding: 24px;
+}
+
+.commandLine {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.prompt {
+  color: var(--accent-2);
+}
+
+.command {
+  color: #fff;
+  font-weight: 500;
+}
+
+/* ─── Log Box ─── */
+.logBox {
+  min-height: 140px;
+  max-height: 140px;
+  overflow-y: auto;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.logLine {
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  animation: logReveal 0.2s ease-out forwards;
+}
+
+.logTime {
+  color: var(--accent);
+}
+
+@keyframes logReveal {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Progress Bar ─── */
+.progressContainer {
+  margin-top: 10px;
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.progressLabel {
+  color: var(--text-secondary);
+}
+
+.progressVal {
+  color: var(--accent);
+}
+
+.progressBar {
+  width: 100%;
+  height: 6px;
+  background-color: var(--bg-card);
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.progressBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+  box-shadow: 0 0 10px var(--accent);
+  transition: width 0.15s ease-out;
+}

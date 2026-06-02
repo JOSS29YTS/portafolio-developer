@@ -1,0 +1,270 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 2rem 4rem;
+}
+
+.dotGrid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--accent) 0.8px, transparent 0.8px);
+  background-size: 32px 32px;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+  animation: dotDrift 18s ease-in-out infinite alternate;
+}
+
+@keyframes dotDrift {
+  from { background-position: 0 0; }
+  to   { background-position: 16px 16px; }
+}
+
+
+
+.scanLine {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    var(--scanline-color) 2px,
+    var(--scanline-color) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glow {
+  position: absolute;
+  top: -250px; left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 600px;
+  background: radial-gradient(ellipse, var(--hero-glow) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  animation: fadeUp 0.8s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.tagLine {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  cursor: default;
+}
+
+.tagDot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s ease infinite;
+  transition: box-shadow 0.3s ease;
+}
+
+.tagLine:hover .tagDot {
+  box-shadow: 0 0 10px var(--green);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.tagMono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  letter-spacing: -0.01em;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.tagLine:hover .tagMono {
+  color: var(--accent-bright);
+  text-shadow: 0 0 8px var(--accent-dim);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 8vw, 80px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.glitchWrap {
+  display: inline-block;
+  position: relative;
+}
+
+.nameGlitch {
+  position: relative;
+}
+
+.nameGlitch:hover .nameGradient {
+  animation: nameGlow 0.3s ease, gradientShift 4s linear infinite;
+}
+
+.nameGradient {
+  background: var(--name-gradient);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradientShift 4s linear infinite;
+  display: inline-block;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes nameGlow {
+  0%, 100% { filter: drop-shadow(0 0 8px var(--accent-dim)); }
+  50%       { filter: drop-shadow(0 0 20px var(--btn-hover-glow)); }
+}
+
+@keyframes textGlitch {
+  0%, 90%, 100% { transform: translate(0); clip-path: inset(0); }
+  92% { transform: translate(-2px, 1px); clip-path: inset(20% 0 60% 0); }
+  94% { transform: translate(2px, -1px); clip-path: inset(60% 0 20% 0); }
+  96% { transform: translate(-1px, 1px); clip-path: inset(30% 0 50% 0); }
+}
+
+.role {
+  font-family: var(--font-mono);
+  font-size: clamp(14px, 1.6vw, 17px);
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  min-height: 1.6em;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.cursor {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: 300;
+  transition: opacity 0.08s;
+  margin-left: 1px;
+}
+
+.sub {
+  font-size: 15px;
+  color: var(--text-secondary);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: var(--btn-text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.btnPrimary:hover {
+  background: var(--accent-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px var(--btn-hover-glow);
+}
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s, color 0.2s;
+}
+.btnSecondary:hover {
+  border-color: var(--accent);
+  color: var(--accent-bright);
+}
+
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  padding: 12px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: color 0.2s, border-color 0.2s;
+}
+.btnGhost:hover {
+  color: var(--accent-bright);
+  border-color: var(--accent-dim);
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-muted);
+  opacity: 0.5;
+  animation: bounce 2s ease infinite;
+  z-index: 1;
+}
+
+.scrollDot {
+  animation: scrollPulse 2s ease infinite;
+}
+
+
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(6px); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}

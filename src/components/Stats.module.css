@@ -1,0 +1,61 @@
+.section {
+  background: var(--bg-surface);
+  border-top: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+  padding: 3rem 2rem;
+}
+
+.grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .item {
+    border-right: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+  }
+  /* En rejilla de 3 columnas, quitamos bordes derechos al 3er elemento y bordes inferiores a los últimos */
+  .item:nth-child(3n) { border-right: none; }
+  .item:nth-child(n+4) { border-bottom: none; }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .item {
+    border-right: none !important;
+    border-bottom: 0.5px solid var(--border) !important;
+  }
+  .item:last-child {
+    border-bottom: none !important;
+  }
+}
+
+.item {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-right: 0.5px solid var(--border);
+}
+.item:last-child { border-right: none; }
+
+.value {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.label {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-top: 0.4rem;
+  font-weight: 300;
+}

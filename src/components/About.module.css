@@ -1,0 +1,385 @@
+.section {
+  padding: 6rem 2rem;
+  background: var(--bg-surface);
+  border-top: 0.5px solid var(--border);
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 850px) {
+  .intro {
+    grid-template-columns: 140px 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .intro {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 1.5rem;
+  }
+}
+
+/* ── Avatar 3D ── */
+.avatarCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tiltCard {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1.5px solid var(--avatar-border);
+  box-shadow:
+    0 0 30px var(--avatar-glow-1),
+    0 0 60px var(--avatar-glow-2),
+    0 8px 32px rgba(0, 0, 0, 0.50);
+  cursor: pointer;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: box-shadow 0.35s ease;
+}
+
+.tiltCard:hover {
+  box-shadow:
+    0 0 45px var(--avatar-glow-1),
+    0 0 80px var(--avatar-glow-2),
+    0 12px 40px rgba(0, 0, 0, 0.55);
+}
+
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 22px;
+  transition: transform 0.4s ease;
+}
+
+/* Glow cian debajo — desactivado */
+.avatarGlow {
+  display: none;
+}
+
+/* Reflejo/shine diagonal — desactivado */
+.avatarShine {
+  display: none;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+}
+
+.text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+
+.actionsRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.contactLinksRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.contactLink:hover {
+  color: var(--accent-bright);
+}
+
+@media (max-width: 768px) {
+  .actionsRow {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .actionsRow {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.1rem;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.skillsWrap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  border-top: 0.5px solid var(--border);
+  padding-top: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .skillsWrap {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.catBlock {
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.5rem 1.75rem;
+  background: var(--bg-card);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.catBlock::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from 0deg,
+      transparent,
+      var(--accent) 30deg,
+      transparent 60deg,
+      transparent 180deg,
+      var(--accent-2) 210deg,
+      transparent 240deg,
+      transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.catBlock:hover::before {
+  opacity: 1;
+  animation: rotateBorder 3s linear infinite;
+}
+
+@keyframes rotateBorder {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.catBlock:hover {
+  border-color: transparent;
+  box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.4), 
+    0 0 16px var(--card-glow);
+}
+
+.catLabel {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  transition: text-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.catBlock:hover .catLabel {
+  text-shadow: 0 0 12px currentColor;
+}
+
+.tools {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem 0.75rem;
+  justify-items: center;
+}
+
+@media (max-width: 380px) {
+  .tools {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.tool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.5rem;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  cursor: default;
+  opacity: 0;
+  animation: popIn 0.4s ease forwards;
+  transition: transform 0.2s ease, background 0.25s ease;
+  width: 100%;
+  max-width: 110px;
+}
+
+.tool:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-3px);
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.toolIcon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+  opacity: 0.9;
+  transition: opacity 0.25s ease, transform 0.2s ease, filter 0.25s ease;
+}
+
+.tool:hover .toolIcon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Iconos oscuros — invertir a blanco/plata limpio para que sean visibles en fondo dark */
+.toolIcon[data-name="GitHub"],
+.toolIcon[data-name="Express"],
+.toolIcon[data-name="JWT"],
+.toolIcon[data-name="Flask"],
+.toolIcon[data-name="Django"],
+.toolIcon[data-name="MySQL"] {
+  filter: var(--icon-invert);
+  opacity: 0.9;
+  transition: filter 0.25s, opacity 0.25s;
+}
+
+.tool:hover .toolIcon[data-name="GitHub"],
+.tool:hover .toolIcon[data-name="Express"],
+.tool:hover .toolIcon[data-name="JWT"],
+.tool:hover .toolIcon[data-name="Flask"],
+.tool:hover .toolIcon[data-name="Django"],
+.tool:hover .toolIcon[data-name="MySQL"] {
+  filter: var(--icon-invert-hover);
+  opacity: 1;
+}
+
+/* ── Reverts in Light Mode (Solarpunk) ── */
+[data-theme='light'] .toolIcon[data-name="Express"],
+[data-theme='light'] .toolIcon[data-name="Flask"],
+[data-theme='light'] .toolIcon[data-name="Django"],
+[data-theme='light'] .toolIcon[data-name="MySQL"] {
+  filter: none !important;
+}
+
+[data-theme='light'] .tool:hover .toolIcon[data-name="Express"],
+[data-theme='light'] .tool:hover .toolIcon[data-name="Flask"],
+[data-theme='light'] .tool:hover .toolIcon[data-name="Django"],
+[data-theme='light'] .tool:hover .toolIcon[data-name="MySQL"] {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12)) !important;
+}
+
+.toolIcon[data-name="Pandas"] {
+  filter: var(--pandas-invert);
+  opacity: 0.9;
+}
+
+.tool:hover .toolIcon[data-name="Pandas"] {
+  filter: var(--pandas-invert-hover);
+  opacity: 1;
+}
+
+.toolName {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-align: center;
+  transition: color 0.25s;
+  line-height: 1.2;
+}
+
+.tool:hover .toolName {
+  color: var(--text-primary);
+}
+
+.cvBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent-bright);
+  background: var(--accent-dim);
+  border: 0.5px solid var(--accent-border);
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.cvBtn:hover {
+  background: var(--accent-dim-hover);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
