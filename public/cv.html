@@ -771,7 +771,7 @@
     <!-- ── FOOTER ── -->
     <footer class="cv-footer">
       <span class="cv-footer-logo">alejandro<span>.dev</span></span>
-      <span class="cv-footer-note">// mayo 2026 — actualizado desde ale.dev</span>
+      <span class="cv-footer-note" id="cv-date">// mayo 2026 — actualizado desde ale.dev</span>
     </footer>
 
   </div>
@@ -785,6 +785,20 @@
     </svg>
     Guardar como PDF
   </button>
+
+  <script>
+    // Sincronizar mes y año actual de forma dinámica
+    (function() {
+      const esMonths = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+      const now = new Date();
+      const currentMonth = esMonths[now.getMonth()];
+      const currentYear = now.getFullYear();
+      const dateEl = document.getElementById('cv-date');
+      if (dateEl) {
+        dateEl.textContent = `// ${currentMonth} ${currentYear} — actualizado desde ale.dev`;
+      }
+    })();
+  </script>
 
 </body>
 </html>
