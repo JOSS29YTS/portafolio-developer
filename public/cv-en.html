@@ -411,7 +411,7 @@
     @media print {
       .print-spacer {
         display: block !important;
-        height: 18mm !important;
+        height: 12mm !important;
         page-break-before: always !important;
         break-before: page !important;
       }
@@ -445,10 +445,30 @@
       }
 
       .page {
-        padding: 22mm 20mm; /* Apply beautiful margins inside the document */
+        padding: 12mm 20mm; /* Apply beautiful margins inside the document */
         max-width: 100%;
         box-sizing: border-box;
         background: var(--bg) !important;
+      }
+
+      .section {
+        margin-bottom: 1.2rem !important;
+      }
+
+      .section-header {
+        margin-bottom: 0.6rem !important;
+      }
+
+      .section-title {
+        margin-bottom: 0.6rem !important;
+      }
+
+      .timeline {
+        gap: 0.65rem !important;
+      }
+
+      .projects {
+        gap: 0.8rem !important;
       }
 
       .summary {
@@ -456,12 +476,15 @@
         border-color: var(--border) !important;
         border-left: 2px solid var(--accent) !important;
         color: var(--text-2) !important;
+        margin-bottom: 1.2rem !important;
+        padding: 1rem 1.25rem !important;
       }
 
       .project-card {
         background: var(--card) !important;
         border-color: var(--border) !important;
         break-inside: avoid;
+        padding: 1rem 1.25rem !important;
       }
       .project-name { color: var(--text) !important; }
       .project-desc { color: var(--text-2) !important; }
@@ -475,12 +498,17 @@
       .section-label { color: var(--accent) !important; }
       .section-title { color: var(--text) !important; }
 
-      .tl-item      { break-inside: avoid !important; } /* Prevent education/experience items from being cut in half */
+      .tl-item      {
+        display: grid !important;
+        grid-template-columns: 130px 1fr !important;
+        gap: 1rem !important;
+        break-inside: avoid !important;
+      }
       .section      { break-inside: avoid !important; }
-      .tl-date     { color: var(--text-2) !important; }
-      .tl-title    { color: var(--text) !important; }
-      .tl-subtitle { color: var(--accent) !important; }
-      .tl-desc     { color: var(--text-2) !important; }
+      .tl-date     { color: var(--text-2) !important; font-size: 11px !important; }
+      .tl-title    { color: var(--text) !important; font-size: 13.5px !important; }
+      .tl-subtitle { color: var(--accent) !important; font-size: 12px !important; }
+      .tl-desc     { color: var(--text-2) !important; font-size: 11.5px !important; line-height: 1.45 !important; }
 
       .contact-item      { color: var(--text-2) !important; }
       .contact-item a    { color: var(--text-2) !important; }
@@ -538,10 +566,9 @@
     <!-- ── SUMMARY ── -->
     <div class="summary">
       9th-semester Systems Engineering student at USM, Caracas.
-      I have designed and deployed 2 systems in active production with real users: a multi-store ERP platform,
-      an AI-powered academic repository, and a phishing threat analyzer. Master of the full development lifecycle—
-      from relational database modeling to responsive UI design—using React, Node.js, Python, and MySQL.
-      Looking for opportunities as a junior developer or product engineer intern.
+      I have designed and deployed 2 systems in active production with real users (multi-store ERP and AI academic repository)
+      and developed complex systems like an automated academic manager (EduFlow) and an AI heuristic phishing detector.
+      Master of the full development lifecycle using React, Django, Node.js, Python, and relational databases.
     </div>
 
     <!-- ── PROYECTOS ── -->
@@ -604,8 +631,32 @@
           </div>
         </div>
 
-        <!-- PhishShield -->
+        <!-- EduFlow -->
         <div class="print-spacer"></div>
+        <div class="project-card" style="--project-color: #00D4FF">
+          <div class="project-top">
+            <span class="project-name">EduFlow</span>
+            <div class="project-links">
+              <a href="https://eduflow-81tz.onrender.com" target="_blank" class="project-link live" style="color:#00D4FF; border-color:#00D4FF">↗ Demo</a>
+              <a href="https://github.com/JOSS29YTS/eduflow-academic-management" target="_blank" class="project-link code">GitHub</a>
+            </div>
+          </div>
+          <p class="project-impact">Academic management and automated invoicing platform for diplomas and courses</p>
+          <p class="project-desc">
+            Enterprise-grade web platform for courses administration. Automates enrollment management, real-time class attendance 
+            control, payments, and automatic PDF invoicing sent via email using background tasks (Celery & Redis) under a secure 
+            Role-Based Access Control (RBAC) scheme.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Python/Django</span>
+            <span class="project-tag">PostgreSQL</span>
+            <span class="project-tag">Celery / Redis</span>
+            <span class="project-tag">Tailwind CSS</span>
+            <span class="project-tag">Docker</span>
+          </div>
+        </div>
+
+        <!-- PhishShield -->
         <div class="project-card" style="--project-color: #FFEA00">
           <div class="project-top">
             <span class="project-name">PhishShield AI</span>
@@ -662,6 +713,7 @@
     </section>
 
     <!-- ── EXPERIENCIA ── -->
+    <div class="print-spacer"></div>
     <section class="section">
       <div class="section-header">
         <span class="section-label">// experience</span>
@@ -670,6 +722,17 @@
       <h2 class="section-title">Professional Experience</h2>
 
       <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">Jun 2026 — Jul 2026</div>
+          <div class="tl-body">
+            <div class="tl-title">Backend Developer / Creator</div>
+            <div class="tl-subtitle">EduFlow · Learning & Research Project</div>
+            <div class="tl-desc">
+              Designed and developed a robust academic administration web platform using Django and PostgreSQL. 
+              Implemented task queues with Celery/Redis for automated email invoicing and Docker containerization.
+            </div>
+          </div>
+        </div>
         <div class="tl-item">
           <div class="tl-date">Apr 2026 — present</div>
           <div class="tl-body">
@@ -694,7 +757,6 @@
             </div>
           </div>
         </div>
-        <div class="print-spacer"></div>
         <div class="tl-item">
           <div class="tl-date">Oct 2025 — Nov 2025</div>
           <div class="tl-body">
