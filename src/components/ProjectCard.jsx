@@ -81,7 +81,7 @@ export default function ProjectCard({ project, index, isActive = true, onHoverCh
             src="/covers/portada_uneweb.jpg"
             alt="EduFlow"
             className={styles.previewScreenshot}
-            style={{ objectPosition: 'center 50%' }}
+            style={{ objectPosition: 'center 30%' }}
           />
         ) : (
           <div className={styles.mockBrowser}>
