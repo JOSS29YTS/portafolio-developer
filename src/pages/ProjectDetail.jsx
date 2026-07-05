@@ -160,20 +160,7 @@ export default function ProjectDetail() {
 
         <Reveal>
           <div className={styles.actions}>
-            {project.demoCredentials ? (
-              <button
-                className={styles.btnDemo}
-                style={{ background: c.accent, border: 'none', cursor: 'pointer', fontWeight: 600 }}
-                onClick={() => {
-                  document.getElementById('demo-credentials')?.scrollIntoView({ behavior: 'smooth' })
-                }}
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <polygon points="5 3 19 12 5 21 5 3" />
-                </svg>
-                {t('projectDetail.viewDemo')}
-              </button>
-            ) : project.demoUrl ? (
+            {project.demoUrl ? (
               <a
                 href={project.demoUrl}
                 target="_blank"
@@ -184,7 +171,7 @@ export default function ProjectDetail() {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <polygon points="5 3 19 12 5 21 5 3" />
                 </svg>
-                {t('projectDetail.liveDemo')}
+                {t('projectDetail.viewDemo')}
               </a>
             ) : null}
             {project.githubUrl && (
@@ -369,22 +356,7 @@ export default function ProjectDetail() {
                   })}
                 </div>
 
-                {project.demoUrl && (
-                  <div style={{ marginTop: '1.5rem', marginBottom: '1.5rem', display: 'flex', justifyContent: 'center' }}>
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className={styles.demoCTABtn}
-                      style={{ background: c.accent, textDecoration: 'none' }}
-                    >
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <polygon points="5 3 19 12 5 21 5 3" />
-                      </svg>
-                      {language === 'es' ? 'Iniciar Demostración en Vivo' : 'Start Live Demo'}
-                    </a>
-                  </div>
-                )}
+
 
                 {/* Cold start warning */}
                 <div className={styles.renderNotice}>
