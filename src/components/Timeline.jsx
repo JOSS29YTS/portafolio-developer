@@ -5,24 +5,6 @@ import styles from './Timeline.module.css'
 const items = [
   {
     year: {
-      es: 'Abr 2026 — presente',
-      en: 'Apr 2026 — present'
-    },
-    title: {
-      es: 'Desarrollador de Software',
-      en: 'Software Developer'
-    },
-    subtitle: {
-      es: 'Colegio Ntra. Sra. de Fátima · Servicio comunitario',
-      en: 'Nuestra Señora de Fátima School · Community Service'
-    },
-    description: {
-      es: 'Diseño e implementación de un sistema web Full-Stack en red local (LAN) para la gestión documental de investigaciones. Automatiza procesos académicos con autenticación segura (JWT) y un sistema de respaldos diarios sincronizados automáticamente en Google Drive.',
-      en: 'Design and implementation of a local network (LAN) Full-Stack web system for research document management. Automates academic processes with secure authentication (JWT) and a daily backup system automatically synced with Google Drive.'
-    },
-  },
-  {
-    year: {
       es: 'Jun — Jul 2026',
       en: 'Jun — Jul 2026'
     },
@@ -37,6 +19,24 @@ const items = [
     description: {
       es: 'Diseño e implementación de un sistema de gestión académica empresarial con Django y PostgreSQL. Optimicé procesos asíncronos mediante Celery y Redis para generación automatizada de facturas PDF, y estructuré la aplicación usando Docker para garantizar la portabilidad.',
       en: 'Design and implementation of an enterprise academic management system with Django and PostgreSQL. Optimized asynchronous processes using Celery and Redis for automated PDF invoicing, and structured the application using Docker to guarantee portability.'
+    },
+  },
+  {
+    year: {
+      es: 'Abr — Jun 2026',
+      en: 'Abr — Jun 2026'
+    },
+    title: {
+      es: 'Desarrollador de Software',
+      en: 'Software Developer'
+    },
+    subtitle: {
+      es: 'Colegio Ntra. Sra. de Fátima · Servicio comunitario',
+      en: 'Nuestra Señora de Fátima School · Community Service'
+    },
+    description: {
+      es: 'Diseño e implementación de un sistema web Full-Stack en red local (LAN) para la gestión documental de investigaciones. Automatiza procesos académicos con autenticación segura (JWT) y un sistema de respaldos diarios sincronizados automáticamente en Google Drive.',
+      en: 'Design and implementation of a local network (LAN) Full-Stack web system for research document management. Automates academic processes with secure authentication (JWT) and a daily backup system automatically synced with Google Drive.'
     },
   },
   {
