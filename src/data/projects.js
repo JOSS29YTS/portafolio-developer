@@ -215,14 +215,65 @@ export const projects = [
     },
     tags: ['Python/Django', 'PostgreSQL', 'Tailwind CSS', 'Docker'],
     techDetails: ['Python 3.12', 'Django 5.0', 'PostgreSQL 16', 'Tailwind CSS 3.4', 'Celery', 'Redis', 'Docker'],
-    screenshots: [],
+    screenshots: [
+      '/covers/portada_uneweb.jpg',
+      '/projects/screenshots-uneweb/dashboard.png',
+      '/projects/screenshots-uneweb/courses.png',
+      '/projects/screenshots-uneweb/course_detail.png',
+      '/projects/screenshots-uneweb/attendance.png'
+    ],
     color: 'yellow',
-    demoUrl: null,
-    githubUrl: null,
-    status: 'in-progress',
+    demoVideoUrl: '/projects/videos/uneweb_demo.mp4',
+    demoUrl: 'https://eduflow-81tz.onrender.com',
+    githubUrl: 'https://github.com/JOSS29YTS/eduflow-academic-management',
+    status: 'live',
+    demoCredentials: {
+      title: {
+        es: 'Credenciales de Demostración',
+        en: 'Demo Credentials'
+      },
+      subtitle: {
+        es: 'Para probar la plataforma en el despliegue de demostración en vivo, puedes utilizar las siguientes cuentas de prueba:',
+        en: 'To test the platform in the live demo deployment, you can use the following test accounts:'
+      },
+      profiles: [
+        {
+          role: {
+            es: 'Profesor',
+            en: 'Professor'
+          },
+          email: 'demo_profesor',
+          emailLabel: {
+            es: 'Usuario:',
+            en: 'Username:'
+          },
+          password: 'demo1234',
+          permissions: {
+            es: 'Acceso al panel docente para registrar asistencia, gestionar sesiones de clases y ver el cronograma académico de sus asignaturas.',
+            en: 'Access to the professor panel to record attendance, manage class sessions, and view the academic schedule for their courses.'
+          }
+        },
+        {
+          role: {
+            es: 'Estudiante',
+            en: 'Student'
+          },
+          email: 'demo_estudiante',
+          emailLabel: {
+            es: 'Usuario:',
+            en: 'Username:'
+          },
+          password: 'demo1234',
+          permissions: {
+            es: 'Acceso al panel de estudiante para visualizar historial de asistencia por clases, calendario de cursos inscritos y facturas generadas de sus pagos.',
+            en: 'Access to the student panel to view class attendance history, schedule of enrolled courses, and invoices generated for their payments.'
+          }
+        }
+      ]
+    },
     learnings: {
-      es: 'Este proyecto me permitirá profundizar en el desarrollo backend de nivel empresarial utilizando Django y Django REST Framework, así como en la orquestación de tareas en segundo plano a gran escala con Celery y Redis. También me servirá para dominar la generación dinámica de facturas en PDF con WeasyPrint y el empaquetado del entorno completo mediante contenedores Docker.',
-      en: 'This project will allow me to deepen my understanding of enterprise-grade backend development using Django and Django REST Framework, as well as background task orchestration at scale with Celery and Redis. It will also serve to master dynamic PDF invoice generation with WeasyPrint and environment containerization using Docker.'
+      es: 'Consolidé mis habilidades en el desarrollo backend de nivel empresarial utilizando Django y Django REST Framework, implementando una arquitectura robusta con PostgreSQL. Perfeccioné la orquestación de tareas en segundo plano en tiempo real con Celery y Redis para procesos asíncronos como la generación automatizada de facturas en PDF (con WeasyPrint) y su posterior envío por correo. Asimismo, dominé la contenedorización con Docker y el uso de HTMX/Alpine.js en el frontend para lograr una interactividad fluida sin la complejidad de un SPA pesado.',
+      en: 'Consolidated my skills in enterprise-level backend development using Django and Django REST Framework, implementing a robust architecture with PostgreSQL. Perfected background task orchestration with Celery and Redis for asynchronous processes like automated PDF invoice generation (via WeasyPrint) and email dispatch. Additionally, mastered Docker containerization and HTMX/Alpine.js frontend usage to achieve fluid interactivity without SPA complexity.'
     },
   }
 ]

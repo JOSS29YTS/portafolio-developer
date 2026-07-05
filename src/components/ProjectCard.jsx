@@ -44,8 +44,8 @@ export default function ProjectCard({ project, index, isActive = true, onHoverCh
         style={{ 
           background: c.bg, 
           borderColor: c.border, 
-          display: (project.slug === 'vesta-retail-erp' || project.slug === 'repositorio-academico' || project.slug === 'phishshield' || project.slug === 'dashboard-estadisticas') ? 'block' : undefined, 
-          padding: (project.slug === 'vesta-retail-erp' || project.slug === 'repositorio-academico' || project.slug === 'phishshield' || project.slug === 'dashboard-estadisticas') ? 0 : undefined 
+          display: (project.slug === 'vesta-retail-erp' || project.slug === 'repositorio-academico' || project.slug === 'phishshield' || project.slug === 'dashboard-estadisticas' || project.slug === 'eduflow') ? 'block' : undefined, 
+          padding: (project.slug === 'vesta-retail-erp' || project.slug === 'repositorio-academico' || project.slug === 'phishshield' || project.slug === 'dashboard-estadisticas' || project.slug === 'eduflow') ? 0 : undefined 
         }}
       >
         {project.slug === 'vesta-retail-erp' ? (
@@ -75,6 +75,13 @@ export default function ProjectCard({ project, index, isActive = true, onHoverCh
             alt="Dashboard Estadísticas"
             className={styles.previewScreenshot}
             style={{ objectPosition: 'left 18%' }}
+          />
+        ) : project.slug === 'eduflow' ? (
+          <img
+            src="/covers/portada_uneweb.jpg"
+            alt="EduFlow"
+            className={styles.previewScreenshot}
+            style={{ objectPosition: 'center 50%' }}
           />
         ) : (
           <div className={styles.mockBrowser}>

@@ -70,5 +70,13 @@
 - **Corrección de URL en vivo en el README:** Actualizamos el enlace principal de demostración en vivo (`Ver en vivo`) y el ejemplo de `VITE_SITE_URL` en `README.md` para que apunten de forma correcta al dominio real del portafolio: `https://portafolio-developer-ten.vercel.app/`.
 - **Verificación de Compilación:** Ejecutamos `pnpm build` para asegurar la integridad de la compilación e inyección del dominio.
 
+### Sesión actual (4 Jul 2026)
+- **Actualización de EduFlow a Producción**: Cambiamos el estado del proyecto EduFlow de `'in-progress'` a `'live'` tras el despliegue de su versión de demostración en `https://eduflow-81tz.onrender.com`. Vinculamos también su repositorio GitHub oficial.
+- **Credenciales y Portada de EduFlow**: Añadimos la portada del proyecto `/covers/portada_uneweb.jpg` y configuramos las credenciales de prueba para Profesor y Estudiante (`demo_profesor` / `demo_estudiante` con contraseña `demo1234`), adaptando la terminal hacker para mostrar el label `"Usuario:"` dinámicamente.
+- **Mejora del Flujo de Demostraciones**: Modificamos el botón superior "Ver demo" para que desplace suavemente hacia la terminal hacker si el proyecto tiene credenciales, permitiendo al usuario ver el login y password antes de acceder. Añadimos el botón "Iniciar Demostración en Vivo" dentro de la propia terminal para un flujo continuo.
+- **Corrección de Resaltado del Navbar (Transition Bug)**: Solucionamos el error donde el menú de navegación se quedaba marcado en "inicio" tras volver a la página principal. Esto se causaba porque el observer se inicializaba antes de que Framer Motion terminara la transición de salida de `ProjectDetail` (bajo `mode="wait"`). Se implementó un retardo de 400ms en `Navbar.jsx` para esperar a que las secciones de la página de inicio se monten en el DOM antes de asociar el `IntersectionObserver`.
+- **Verificación de Compilación Exitosa:** Compilación exitosa en 3.87s con `pnpm build` y 0 advertencias en `pnpm lint`.
+
 ### Pendiente de tu parte
 - **[Opcional]** Reemplazar `VITE_SITE_URL` en `.env` (o en la interfaz de Vercel) con un dominio personalizado propio cuando decidas comprar uno.
+

@@ -32,37 +32,45 @@ export default function Navbar() {
 
   useEffect(() => {
     if (pathname !== '/') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActiveSection('')
       return
     }
 
     setActiveSection('home')
 
-    const sections = NAV_LINKS.map(l => document.getElementById(l.section)).filter(Boolean)
+    let observer
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          visibleRatios.current[entry.target.id] = entry.intersectionRatio
-        })
+    const timer = setTimeout(() => {
+      const sections = NAV_LINKS.map(l => document.getElementById(l.section)).filter(Boolean)
 
-        let best = ''
-        let bestRatio = 0
-        for (const l of NAV_LINKS) {
-          const r = visibleRatios.current[l.section] || 0
-          if (r > bestRatio) {
-            bestRatio = r
-            best = l.section
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            visibleRatios.current[entry.target.id] = entry.intersectionRatio
+          })
+
+          let best = ''
+          let bestRatio = 0
+          for (const l of NAV_LINKS) {
+            const r = visibleRatios.current[l.section] || 0
+            if (r > bestRatio) {
+              bestRatio = r
+              best = l.section
+            }
           }
-        }
-        if (best) setActiveSection(best)
-      },
-      { threshold: [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1] }
-    )
+          if (best) setActiveSection(best)
+        },
+        { threshold: [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1] }
+      )
 
-    sections.forEach(el => observer.observe(el))
+      sections.forEach(el => observer.observe(el))
+    }, 400)
 
-    return () => observer.disconnect()
+    return () => {
+      clearTimeout(timer)
+      if (observer) observer.disconnect()
+    }
   }, [pathname])
 
   return (
